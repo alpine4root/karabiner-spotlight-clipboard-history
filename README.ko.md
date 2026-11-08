@@ -2,13 +2,13 @@
 
 [English](README.md)
 
-**Option+V (⌥V)**로 macOS Spotlight의 **클립보드 기록**을 여는 Karabiner-Elements 규칙입니다.
+**Option+V (⌥V)**로 macOS Spotlight의 **클립보드 기록**을 여는 [Karabiner-Elements](https://karabiner-elements.pqrs.org/) 규칙입니다.
 
 ## 설치
 
-**macOS Tahoe 26 이상**, 권한 설정을 마친 **Karabiner-Elements 16 이상**이 필요합니다.
+**[macOS Tahoe 26 이상](https://www.apple.com/newsroom/2025/06/macos-tahoe-26-makes-the-mac-more-capable-productive-and-intelligent-than-ever/)**, 권한 설정을 마친 **[Karabiner-Elements](https://karabiner-elements.pqrs.org/) 16 이상**이 필요합니다.
 
-1. Karabiner-Elements에서 **Complex Modifications → Add your own rule**을 엽니다.
+1. [Karabiner-Elements](https://karabiner-elements.pqrs.org/)에서 **Complex Modifications → Add your own rule**을 엽니다.
 2. [`karabiner-rule.json`](karabiner-rule.json)을 붙여 넣고 저장한 뒤 **⌥V**를 누릅니다.
 
 ## 동작
