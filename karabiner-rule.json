@@ -1,0 +1,282 @@
+{
+  "description": "Option+V → Spotlight Clipboard",
+  "manipulators": [
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": [
+            "^com\\.apple\\.Spotlight$",
+            "^com\\.apple\\.campo$"
+          ],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "v",
+        "modifiers": {
+          "mandatory": [
+            "option"
+          ],
+          "optional": [
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.apple\\.Spotlight$",
+                "^com\\.apple\\.campo$"
+              ],
+              "type": "frontmost_application_if"
+            },
+            {
+              "name": "accessibility.focused_ui_element.subrole_string",
+              "type": "variable_if",
+              "value": "AXSearchField"
+            }
+          ],
+          "key_code": "4",
+          "modifiers": [
+            "command"
+          ],
+          "repeat": false
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": [
+            "^com\\.apple\\.Spotlight$",
+            "^com\\.apple\\.campo$"
+          ],
+          "type": "frontmost_application_unless"
+        },
+        {
+          "expression": "spotlight_clipboard_open_until > system.now.milliseconds",
+          "type": "expression_if"
+        }
+      ],
+      "from": {
+        "key_code": "v",
+        "modifiers": {
+          "mandatory": [
+            "option"
+          ],
+          "optional": [
+            "caps_lock"
+          ]
+        }
+      },
+      "parameters": {
+        "basic.to_delayed_action_delay_milliseconds": 300,
+        "basic.to_if_alone_timeout_milliseconds": 300,
+        "basic.to_if_held_down_threshold_milliseconds": 100
+      },
+      "to": [
+        {
+          "key_code": "vk_none"
+        }
+      ],
+      "to_delayed_action": {
+        "to_if_canceled": [],
+        "to_if_invoked": [
+          {
+            "conditions": [
+              {
+                "bundle_identifiers": [
+                  "^com\\.apple\\.Spotlight$",
+                  "^com\\.apple\\.campo$"
+                ],
+                "type": "frontmost_application_if"
+              },
+              {
+                "name": "accessibility.focused_ui_element.subrole_string",
+                "type": "variable_if",
+                "value": "AXSearchField"
+              }
+            ],
+            "key_code": "4",
+            "modifiers": [
+              "command"
+            ],
+            "repeat": false,
+            "halt": true
+          }
+        ]
+      },
+      "type": "basic",
+      "to_if_alone": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.apple\\.Spotlight$",
+                "^com\\.apple\\.campo$"
+              ],
+              "type": "frontmost_application_if"
+            },
+            {
+              "name": "accessibility.focused_ui_element.subrole_string",
+              "type": "variable_if",
+              "value": "AXSearchField"
+            }
+          ],
+          "key_code": "4",
+          "modifiers": [
+            "command"
+          ],
+          "repeat": false,
+          "halt": true
+        }
+      ],
+      "to_if_held_down": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.apple\\.Spotlight$",
+                "^com\\.apple\\.campo$"
+              ],
+              "type": "frontmost_application_if"
+            },
+            {
+              "name": "accessibility.focused_ui_element.subrole_string",
+              "type": "variable_if",
+              "value": "AXSearchField"
+            }
+          ],
+          "key_code": "4",
+          "modifiers": [
+            "command"
+          ],
+          "repeat": false,
+          "halt": true
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": [
+            "^com\\.apple\\.Spotlight$",
+            "^com\\.apple\\.campo$"
+          ],
+          "type": "frontmost_application_unless"
+        },
+        {
+          "expression": "spotlight_clipboard_open_until > system.now.milliseconds",
+          "type": "expression_unless"
+        }
+      ],
+      "from": {
+        "key_code": "v",
+        "modifiers": {
+          "mandatory": [
+            "option"
+          ],
+          "optional": [
+            "caps_lock"
+          ]
+        }
+      },
+      "parameters": {
+        "basic.to_delayed_action_delay_milliseconds": 300,
+        "basic.to_if_alone_timeout_milliseconds": 300,
+        "basic.to_if_held_down_threshold_milliseconds": 100
+      },
+      "to": [
+        {
+          "set_variable": {
+            "expression": "system.now.milliseconds + 500",
+            "name": "spotlight_clipboard_open_until"
+          }
+        },
+        {
+          "apple_vendor_keyboard_key_code": "spotlight",
+          "repeat": false
+        }
+      ],
+      "to_delayed_action": {
+        "to_if_canceled": [],
+        "to_if_invoked": [
+          {
+            "conditions": [
+              {
+                "bundle_identifiers": [
+                  "^com\\.apple\\.Spotlight$",
+                  "^com\\.apple\\.campo$"
+                ],
+                "type": "frontmost_application_if"
+              },
+              {
+                "name": "accessibility.focused_ui_element.subrole_string",
+                "type": "variable_if",
+                "value": "AXSearchField"
+              }
+            ],
+            "key_code": "4",
+            "modifiers": [
+              "command"
+            ],
+            "repeat": false,
+            "halt": true
+          }
+        ]
+      },
+      "type": "basic",
+      "to_if_alone": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.apple\\.Spotlight$",
+                "^com\\.apple\\.campo$"
+              ],
+              "type": "frontmost_application_if"
+            },
+            {
+              "name": "accessibility.focused_ui_element.subrole_string",
+              "type": "variable_if",
+              "value": "AXSearchField"
+            }
+          ],
+          "key_code": "4",
+          "modifiers": [
+            "command"
+          ],
+          "repeat": false,
+          "halt": true
+        }
+      ],
+      "to_if_held_down": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.apple\\.Spotlight$",
+                "^com\\.apple\\.campo$"
+              ],
+              "type": "frontmost_application_if"
+            },
+            {
+              "name": "accessibility.focused_ui_element.subrole_string",
+              "type": "variable_if",
+              "value": "AXSearchField"
+            }
+          ],
+          "key_code": "4",
+          "modifiers": [
+            "command"
+          ],
+          "repeat": false,
+          "halt": true
+        }
+      ]
+    }
+  ]
+}
